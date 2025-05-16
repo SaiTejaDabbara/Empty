@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dice Game</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 3px #000;
+    }
+
+    h2 {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+
+    .dice-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .dice-container img {
+      width: 100px;
+      height: 100px;
+      border: 4px solid #fff;
+      border-radius: 15px;
+      box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    .roll-button {
+      background-color: #ff6f61;
+      border: none;
+      padding: 12px 25px;
+      color: white;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background-color 0.3s;
+    }
+
+    .roll-button:hover {
+      background-color: #e2544a;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #eee;
+    }
+
+    @media (max-width: 500px) {
+      .dice-container img {
+        width: 80px;
+        height: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Dice Game</h1>
+  <h2>Roll the die and decide it!</h2>
+
+  <div class="dice-container">
+    <img class="img1" src="/html/Images/dice1.png" alt="Dice 1">
+    <img class="img2" src="/html/Images/dice1.png" alt="Dice 2">
+  </div>
+
+  <button class="roll-button" onclick="rollDice()">Roll Dice</button>
+
+  <!-- Hidden audio tag for dice roll sound -->
+  <audio id="dice-sound" src="/html/Images/soundsroll.mp3" hidden preload="auto"></audio>
+
+  <script>
+    const l = [1, 2, 3, 4, 5, 6];
+    const player1 = prompt('Enter Player 1 name');
+    const player2 = prompt('Enter Player 2 name');
+
+    function rollDice() {
+      const N = Math.floor(Math.random() * 6);
+      const v = Math.floor(Math.random() * 6);
+
+      document.querySelector('.img1').src = `/html/Images/dice${l[N]}.png`;
+      document.querySelector('.img2').src = `/html/Images/dice${l[v]}.png`;
+
+      const diceSound = document.getElementById('dice-sound');
+      diceSound.currentTime = 0;
+      diceSound.play().catch(err => {
+        console.log("Audio play failed:", err);
+      });
+
+      const heading = document.querySelector('h1');
+      if (l[N] > l[v]) {
+        heading.innerHTML = `Congrats ${player1} won, ${player2} lost!`;
+      } else if (l[N] < l[v]) {
+        heading.innerHTML = ` Congrats ${player2} won, ${player1} lost!`;
+      } else {
+        heading.innerHTML = ` It's a tie between ${player1} and ${player2}!`;
+      }
+    }
+  </script>
+
+</body>
+</html>

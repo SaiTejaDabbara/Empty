@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom</title>
+    <style>
+        .class1{
+            background-color: black;
+            height: 100px;
+            width: 100px;
+            padding: 50px 50px;
+            border: 1px solid white;
+            color: aliceblue;
+
+        }
+        /* .class2{
+            background-color: rgb(130, 21, 21);
+            height: 100px;
+            width: 100px;
+            padding: 50px 50px;
+        }
+        .class3{
+            background-color: rgb(12, 86, 107);
+            height: 100px;
+            width: 100px;
+            padding: 50px 50px;
+            
+        } */
+    </style>
+</head>
+<body>
+    
+    <!-- <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga rem odio quo nesciunt voluptas harum in alias? Magnam consequuntur laborum error voluptas accusamus, maiores vero ex harum! Nemo, voluptate facilis!
+    </p>
+    <h3>saiteja</h3>
+    <div class="class1">eliment1</div>
+    <div class="class1">eliment2</div>
+    <div class="class1">eliment3</div> -->
+    <!-- <h1>first</h1>
+    <h1>second</h1>
+    <h1>third</h1> -->
+    <!-- <p class="para"></p> -->
+     <!-- <button onclick="wall()">wall</button>-->
+      <!-- <img src="" alt="img"> -->
+    <form action="">
+        <input type="text" id="inp">
+    </form>
+    <script>
+        function create(){
+            let a=document.getElementById('inp').value
+            for(let i=a;i>=0;i++){
+                let div=document.createElement('div')
+                div.style.height='100px'
+                div.style.width='100px'
+                div.style.backgroundColor="red"
+                div.style.border='1px'
+                
+            }
+            console.log(a)
+        }
+    </script>
+    <script src="/html/javascript/dom.js"></script>
+</body>
+</html>
